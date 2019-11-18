@@ -19,6 +19,10 @@ require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/processCommand',function(request,response){
+    console.log( request);
+    response.send('OK');
+});
 
 app.post('/processCommand', function(request,response){
     // console.log(request.body);
@@ -59,18 +63,13 @@ app.post('/processCommand', function(request,response){
 
 app.get('/',function(request,response){
     console.log(request.ips);
-    response.send("ok");
+    response.send("This is root. Try to make request to other APIs. \nKarlo Bhaiya");
 });
 
 app.post("/schedule_meeting",function(request,response){
     console.log(request.body);
     response.send("ok");
 })
-
-app.get('/processCommand',function(request,response){
-    console.log( request);
-    response.send('OK');
-    });
 
 app.get('/verify_meeting_key/:meeting_key',(req,res)=>{
     res.send("key verified");
